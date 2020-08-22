@@ -1,6 +1,6 @@
 # Minitest::Snapshots
 
-Simple minitest plugin gem implementing Jest style snapshot testing. It's like VCR, but for any string.
+Simple minitest plugin gem implementing Jest-style snapshot testing. It's like VCR, but for any value.
 
 ## Usage
 

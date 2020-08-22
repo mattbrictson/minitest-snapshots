@@ -9,15 +9,11 @@ Gem::Specification.new do |spec|
   spec.authors = ["Harry Brundage"]
   spec.email = ["harry.brundage@gmail.com"]
 
-  spec.summary = %q{Adds jest style snapshot testing asserting against long values stored on the filesystem.}
+  spec.summary = %q{Minitest plugin implementing Jest-style snapshot testing}
   spec.homepage = "https://github.com/superpro-inc/minitest-snapshots"
   spec.license = "MIT"
 
-  # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = Dir.chdir(File.expand_path("..", __FILE__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  end
+  spec.files = `git ls-files -z *.md *.txt lib`.split("\0")
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
