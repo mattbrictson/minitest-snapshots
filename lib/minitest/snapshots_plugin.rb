@@ -1,4 +1,5 @@
-require "minitest/snapshots/version"
+require_relative "snapshots"
+require_relative "snapshots/version"
 
 module Minitest
   def self.plugin_snapshots_options(opts, options)
@@ -12,9 +13,8 @@ module Minitest
   end
 
   def self.plugin_snapshots_init(options)
-    require "minitest/snapshots"
-    require "minitest/snapshots/test_extensions"
-    require "minitest/snapshots/assertion_extensions"
+    require_relative "snapshots/test_extensions"
+    require_relative "snapshots/assertion_extensions"
     Minitest::Test.send :include, Minitest::Snapshots::TestExtensions
   end
 end
