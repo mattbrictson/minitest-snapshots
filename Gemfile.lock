@@ -13,7 +13,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.1)
   minitest (~> 5.14)
   minitest-snapshots!
   rake (~> 13.0)
