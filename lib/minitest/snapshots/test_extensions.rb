@@ -6,15 +6,7 @@ module Minitest
       def before_setup
         super
         @snapshot_assertion_counter = 0
-        @snapshot_dir ||= if defined?(Rails) && Rails.respond_to?(:root)
-                            Rails.root.join("test", "snapshots").to_s
-                          elsif Dir.exist?("test")
-                            File.expand_path("test/snapshots")
-                          elsif Dir.exist?("spec")
-                            File.expand_path("spec/snapshots")
-                          else
-                            File.expand_path("snapshots")
-                          end
+        @snapshot_dir ||= Minitest::Snapshots.default_snapshots_directory
       end
 
       private
