@@ -20,4 +20,30 @@ class TestSnapshots < Minitest::Test
   def test_set
     assert_matches_snapshot(Set.new((0..100).sort_by { rand }))
   end
+
+  def test_default_snapshots_directory
+    assert_equal(File.expand_path("snapshots", __dir__), Minitest::Snapshots.default_snapshots_directory)
+  end
+
+  def test_default_snapshots_directory_uses_rails_root_if_defined
+    with_rails_module_stub do
+      Rails.define_singleton_method(:root) { Pathname.new("/path/to/rails/root") }
+      assert_equal("/path/to/rails/root/test/snapshots", Minitest::Snapshots.default_snapshots_directory)
+    end
+  end
+
+  def test_default_snapshots_directory_ignores_rails_if_root_is_undefined
+    with_rails_module_stub do
+      assert_equal(File.expand_path("snapshots", __dir__), Minitest::Snapshots.default_snapshots_directory)
+    end
+  end
+
+  private
+
+  def with_rails_module_stub
+    Object.const_set :Rails, Module.new
+    yield
+  ensure
+    Object.send(:remove_const, :Rails)
+  end
 end
