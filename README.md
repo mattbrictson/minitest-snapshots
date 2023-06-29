@@ -1,5 +1,8 @@
 # Minitest::Snapshots
 
+[![Gem Version](https://badge.fury.io/rb/minitest-snapshots.svg)](https://rubygems.org/gems/minitest-snapshots)
+[![CI](https://github.com/mattbrictson/gem/actions/workflows/ci.yml/badge.svg)](https://github.com/mattbrictson/gem/actions/workflows/ci.yml)
+
 Simple minitest plugin gem implementing Jest-style snapshot testing. It's like VCR, but for any value.
 
 ## Usage

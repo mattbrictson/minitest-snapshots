@@ -1,0 +1,5 @@
+--- !ruby/object:Hash
+:baz: 1
+:foo: bar
+:qux: !ruby/object:Hash
+  :foo: corge
