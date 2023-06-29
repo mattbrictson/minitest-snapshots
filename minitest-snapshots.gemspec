@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/mattbrictson/minitest-snapshots/issues",
-    "changelog_uri" => "https://github.com/mattbrictson/minitest-snapshots/blob/main/Changelog.md",
+    "changelog_uri" => "https://github.com/mattbrictson/minitest-snapshots/releases",
     "source_code_uri" => "https://github.com/mattbrictson/minitest-snapshots",
     "homepage_uri" => spec.homepage,
     "rubygems_mfa_required" => "true"
