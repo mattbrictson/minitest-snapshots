@@ -1,5 +1,4 @@
-require "minitest/autorun"
-require_relative "../lib/minitest/snapshots"
+require "test_helper"
 
 class TestSnapshots < Minitest::Test
   def test_string_matches
