@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary = "Minitest plugin implementing Jest-style snapshot testing"
   spec.homepage = "https://github.com/mattbrictson/minitest-snapshots"
   spec.license = "MIT"
+  spec.required_ruby_version = ">= 2.7"
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/mattbrictson/minitest-snapshots/issues",
