@@ -1,5 +1,4 @@
 require "minitest/autorun"
-require "minitest/assert_errors"
 require_relative "../lib/minitest/snapshots"
 
 class TestSnapshots < Minitest::Test
@@ -8,9 +7,11 @@ class TestSnapshots < Minitest::Test
   end
 
   def test_unmatching_string_raises
-    assert_have_error(/does not match the snapshot/) do
+    error = assert_raises(Minitest::Assertion) do
       assert_matches_snapshot "foo"
     end
+
+    assert_match(/does not match the snapshot/, error.message)
   end
 
   def test_hash_matches
