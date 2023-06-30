@@ -28,6 +28,10 @@ end
 - `-u` or `--update-snapshots`: Update snapshots on disk to the new actual value when re-running the test. Useful when you know the new output of a test case is correct and the snapshot is out of date.
 - `-l` or `--lock-snapshots`: Prevents new snapshots from being written. Useful on CI to ensure all snapshots have been written by the developer.
 
+For example, to update snapshots on a Rails project:
+
+    $ bin/rails test -u
+
 ## Installation
 
 Add this line to your application's Gemfile:
