@@ -22,7 +22,7 @@ module Minitest
       end
 
       def snapshot_path(suite_name, snapshot_name)
-        filename = "%s__%s.snap.yaml" % [sanitize(name), sanitize(snapshot_name)]
+        filename = format("%s__%s.snap.yaml", sanitize(name), sanitize(snapshot_name))
         subdir = sanitize(suite_name)
         File.join(@snapshot_dir, subdir, filename)
       end
