@@ -1,5 +1,6 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
+require "rubocop/rake_task"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -7,7 +8,9 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList["test/**/*_test.rb"]
 end
 
-task default: :test
+RuboCop::RakeTask.new
+
+task default: %i[test rubocop]
 
 # == "rake release" enhancements ==============================================
 
@@ -35,7 +38,7 @@ task :verify_gemspec_files do
     If not, you may need to delete these files or modify the gemspec to ensure
     that they are not included in the gem by mistake:
 
-    #{ignored_by_git.join("\n").gsub(/^/, '  ')}
+    #{ignored_by_git.join("\n").gsub(/^/, "  ")}
 
   ERROR
 end

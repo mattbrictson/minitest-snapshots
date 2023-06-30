@@ -14,7 +14,7 @@ class TestSnapshots < Minitest::Test
   end
 
   def test_hash_matches
-    assert_matches_snapshot({ foo: "bar", baz: 1, qux: { foo: "corge" } })
+    assert_matches_snapshot({foo: "bar", baz: 1, qux: {foo: "corge"}})
   end
 
   def test_set
