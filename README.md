@@ -57,3 +57,7 @@ The gem is available as open source under the terms of the [MIT License](LICENSE
 ## Code of Conduct
 
 Everyone interacting in the this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+## History
+
+`minitest-snapshots` was created by Harry Brundage (@airhorns) and originally published to rubygems in 2019. Significant contributions were [added](https://github.com/mattbrictson/minitest-snapshots/pull/6) by @chocolateboy in 2020. In June 2023, ownership of the project was transferred to Matt Brictson (@mattbrictson).
