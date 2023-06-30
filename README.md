@@ -5,6 +5,10 @@
 
 Simple minitest plugin gem implementing Jest-style snapshot testing. It's like VCR, but for any value.
 
+## Requirements
+
+- Ruby 2.7 or later
+
 ## Usage
 
 Instead of copying and pasting large segments of machine generated text into your test files, and updating them all the time, assert against a snapshot managed by this library. The first time the snapshot assertion is run it will write the value to disk, and then then next time, it will check against that value.
