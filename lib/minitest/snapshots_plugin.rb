@@ -15,6 +15,6 @@ module Minitest
   def self.plugin_snapshots_init(_options)
     require_relative "snapshots/test_extensions"
     require_relative "snapshots/assertion_extensions"
-    Minitest::Test.send :include, Minitest::Snapshots::TestExtensions
+    Minitest::Test.include Minitest::Snapshots::TestExtensions
   end
 end
