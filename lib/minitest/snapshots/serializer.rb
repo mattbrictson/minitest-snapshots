@@ -33,26 +33,24 @@ module Minitest
       # and are not installed if custom hooks are already defined.
       def self.serialize(value)
         @lock.synchronize do
-          begin
-            if (hook_hash = hook?(Hash))
-              Hash.define_method(HOOK) do |coder|
-                sorted = sort_by { |pair| pair.first.to_yaml }.to_h
-                coder.map = dup.clear.merge!(sorted)
-              end
+          if (hook_hash = hook?(Hash))
+            Hash.define_method(HOOK) do |coder|
+              sorted = sort_by { |pair| pair.first.to_yaml }.to_h
+              coder.map = dup.clear.merge!(sorted)
             end
-
-            if (hook_set = hook?(Set))
-              Set.define_method(HOOK) do |coder|
-                sorted = sort_by(&:to_yaml)
-                coder.seq = dup.clear.merge(sorted)
-              end
-            end
-
-            value.to_yaml
-          ensure
-            Hash.remove_method(HOOK) if hook_hash
-            Set.remove_method(HOOK) if hook_set
           end
+
+          if (hook_set = hook?(Set))
+            Set.define_method(HOOK) do |coder|
+              sorted = sort_by(&:to_yaml)
+              coder.seq = dup.clear.merge(sorted)
+            end
+          end
+
+          value.to_yaml
+        ensure
+          Hash.remove_method(HOOK) if hook_hash
+          Set.remove_method(HOOK) if hook_set
         end
       end
 
