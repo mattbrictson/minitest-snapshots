@@ -1,5 +1,5 @@
-require 'set'
-require 'yaml'
+require "set"
+require "yaml"
 
 module Minitest
   module Snapshots

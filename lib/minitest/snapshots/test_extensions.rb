@@ -12,7 +12,7 @@ module Minitest
       private
 
       def sanitize(name)
-        sanitized = name.to_s.downcase.gsub(/(?:\A[\W_]+)|(?:[\W_]+\z)/, '').gsub(/[\W_]+/, '_')
+        sanitized = name.to_s.downcase.gsub(/(?:\A[\W_]+)|(?:[\W_]+\z)/, "").gsub(/[\W_]+/, "_")
 
         if sanitized.empty?
           raise NameError, "Can't sanitize name: #{name.inspect}"
