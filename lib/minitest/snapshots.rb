@@ -2,8 +2,7 @@ require "minitest"
 
 module Minitest::Snapshots
   class << self
-    attr_accessor :force_updates
-    attr_accessor :lock_snapshots
+    attr_accessor :force_updates, :lock_snapshots
 
     def default_snapshots_directory
       if defined?(Rails) && Rails.respond_to?(:root)
