@@ -44,3 +44,69 @@ task :verify_gemspec_files do
 end
 
 Rake::Task[:build].enhance [:verify_gemspec_files]
+
+# == "rake bump" tasks ========================================================
+
+task bump: %w[bump:bundler bump:ruby]
+
+namespace :bump do
+  task :bundler do
+    sh "bundle up --bundler"
+  end
+
+  task :ruby do
+    lowest_minor = RubyVersions.lowest_supported_minor
+    latest = RubyVersions.latest
+    latest_patches = RubyVersions.latest_supported_patches
+
+    replace_in_file "minitest-snapshots.gemspec", /ruby_version = .*">= (.*)"/ => lowest_minor
+    replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
+    replace_in_file ".github/workflows/ci.yml", /ruby-version: "([\d.]+)"/ => latest
+    replace_in_file ".github/workflows/ci.yml", /ruby: (\[.+\])/ => latest_patches.inspect
+    replace_in_file "README.md", /Ruby ([\d.]+) or later/ => lowest_minor
+  end
+end
+
+require "date"
+require "open-uri"
+require "yaml"
+
+def replace_in_file(path, replacements)
+  contents = File.read(path)
+  orig_contents = contents.dup
+  replacements.each do |regexp, text|
+    raise "Can't find #{regexp} in #{path}" unless regexp.match?(contents)
+
+    contents.gsub!(regexp) do |match|
+      match[regexp, 1] = text
+      match
+    end
+  end
+  File.write(path, contents) if contents != orig_contents
+end
+
+module RubyVersions
+  class << self
+    def lowest_supported_minor
+      latest_supported_patches.first[/\d+\.\d+/]
+    end
+
+    def latest
+      latest_supported_patches.last
+    end
+
+    def latest_supported_patches
+      patches = versions.values_at(:stable, :security_maintenance).compact.flatten
+      patches.map { |p| Gem::Version.new(p) }.sort.map(&:to_s)
+    end
+
+    private
+
+    def versions
+      @_versions ||= begin
+        yaml = URI.open("https://raw.githubusercontent.com/ruby/www.ruby-lang.org/HEAD/_data/downloads.yml")
+        YAML.safe_load(yaml, symbolize_names: true)
+      end
+    end
+  end
+end
