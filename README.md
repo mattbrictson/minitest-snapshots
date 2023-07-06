@@ -16,7 +16,7 @@ Instead of copying and pasting large segments of machine generated text into you
 Example:
 
 ```ruby
-class QueryCompilerText extends Minitest::Test
+class QueryCompilerText < Minitest::Test
   def test_it_can_compile_a_query
     assert_matches_snapshot QueryCompiler.new.compile
   end
