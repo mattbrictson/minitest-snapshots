@@ -2,7 +2,7 @@
 
 [![Gem Version](https://img.shields.io/gem/v/minitest-snapshots)](https://rubygems.org/gems/minitest-snapshots)
 [![Gem Downloads](https://img.shields.io/gem/dt/minitest-snapshots)](https://www.ruby-toolbox.com/projects/minitest-snapshots)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mattbrictson/minitest-snapshots/ci.yml)](https://github.com/mattbrictson/gem/actions/workflows/ci.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mattbrictson/minitest-snapshots/ci.yml)](https://github.com/mattbrictson/minitest-snapshots/actions/workflows/ci.yml)
 
 Simple minitest plugin gem implementing Jest-style snapshot testing. It's like VCR, but for any value.
 
