@@ -31,7 +31,11 @@ end
 
 For example, to update snapshots on a Rails project:
 
-    $ bin/rails test -u
+    bin/rails test -u
+
+In a Rake project:
+
+    rake test TESTOPTS=-u
 
 ## Installation
 
