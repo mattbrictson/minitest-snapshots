@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TestSnapshots < Minitest::Test
+class Minitest::SnapshotsTest < Minitest::Test
   def test_string_matches
     assert_matches_snapshot "foo"
   end
@@ -22,7 +22,7 @@ class TestSnapshots < Minitest::Test
   end
 
   def test_default_snapshots_directory
-    assert_equal(File.expand_path("snapshots", __dir__), Minitest::Snapshots.default_snapshots_directory)
+    assert_equal(File.expand_path("../snapshots", __dir__), Minitest::Snapshots.default_snapshots_directory)
   end
 
   def test_default_snapshots_directory_uses_rails_root_if_defined
@@ -34,7 +34,7 @@ class TestSnapshots < Minitest::Test
 
   def test_default_snapshots_directory_ignores_rails_if_root_is_undefined
     with_rails_module_stub do
-      assert_equal(File.expand_path("snapshots", __dir__), Minitest::Snapshots.default_snapshots_directory)
+      assert_equal(File.expand_path("../snapshots", __dir__), Minitest::Snapshots.default_snapshots_directory)
     end
   end
 
