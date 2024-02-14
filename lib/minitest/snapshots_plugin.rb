@@ -3,12 +3,14 @@ require_relative "snapshots/version"
 
 module Minitest
   def self.plugin_snapshots_options(opts, _options)
+    Minitest::Snapshots.lock_snapshots = !ENV["CI"].to_s.empty?
+
     opts.on "-u", "--update-snapshots", "Update (overwrite) stored snapshots" do
       Minitest::Snapshots.force_updates = true
     end
 
-    opts.on "-l", "--lock-snapshots", "Prevent any snapshots from being stored" do
-      Minitest::Snapshots.lock_snapshots = true
+    opts.on "-l", "--[no-]lock-snapshots", "Prevent any snapshots from being stored" do |bool|
+      Minitest::Snapshots.lock_snapshots = bool
     end
   end
 

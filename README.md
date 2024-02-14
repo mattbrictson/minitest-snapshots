@@ -27,7 +27,7 @@ end
 ## Command line options
 
 - `-u` or `--update-snapshots`: Update snapshots on disk to the new actual value when re-running the test. Useful when you know the new output of a test case is correct and the snapshot is out of date.
-- `-l` or `--lock-snapshots`: Prevents new snapshots from being written. Useful on CI to ensure all snapshots have been written by the developer.
+- `-l` or `--lock-snapshots`: Prevents new snapshots from being written. This is enabled by default in CI (i.e. when the `CI` env var is present).
 
 For example, to update snapshots on a Rails project:
 
