@@ -17,8 +17,14 @@ class Minitest::SnapshotsTest < Minitest::Test
     assert_matches_snapshot({foo: "bar", baz: 1, qux: {foo: "corge"}})
   end
 
-  def test_set
-    assert_matches_snapshot(Set.new((0..100).sort_by { rand }))
+  if RUBY_VERSION >= "3.5.0"
+    def test_set_3_5
+      assert_matches_snapshot(Set.new((0..100).sort_by { rand }))
+    end
+  else
+    def test_set
+      assert_matches_snapshot(Set.new((0..100).sort_by { rand }))
+    end
   end
 
   def test_default_snapshots_directory
