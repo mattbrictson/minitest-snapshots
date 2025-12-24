@@ -9,6 +9,7 @@ Simple minitest plugin gem implementing Jest-style snapshot testing. It's like V
 ## Requirements
 
 - Ruby 2.7 or later
+- Minitest 5 or later
 
 ## Usage
 
@@ -52,6 +53,12 @@ And then execute:
 Or install it yourself as:
 
     $ gem install minitest-snapshots
+
+If you are using Minitest 6 or later, you may need to add this line to your `test_helper.rb` or equivalent:
+
+```ruby
+require "minitest/snapshots"
+```
 
 ## Development
 
