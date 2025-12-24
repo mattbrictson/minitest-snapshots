@@ -9,6 +9,7 @@ Simple minitest plugin gem implementing Jest-style snapshot testing. It's like V
 ## Requirements
 
 - Ruby 2.7 or later
+- Minitest 5 or later
 
 ## Usage
 
