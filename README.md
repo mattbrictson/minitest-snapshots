@@ -54,6 +54,12 @@ Or install it yourself as:
 
     $ gem install minitest-snapshots
 
+If you are using Minitest 6 or later, you may need to add this line to your `test_helper.rb` or equivalent:
+
+```ruby
+require "minitest/snapshots"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

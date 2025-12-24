@@ -1,4 +1,3 @@
-require_relative "snapshots"
 require_relative "snapshots/version"
 
 module Minitest
@@ -18,5 +17,23 @@ module Minitest
     require_relative "snapshots/test_extensions"
     require_relative "snapshots/assertion_extensions"
     Minitest::Test.include Minitest::Snapshots::TestExtensions
+  end
+
+  module Snapshots
+    class << self
+      attr_accessor :force_updates, :lock_snapshots
+
+      def default_snapshots_directory
+        if defined?(Rails) && Rails.respond_to?(:root)
+          Rails.root.join("test", "snapshots").to_s
+        elsif Dir.exist?("test")
+          File.expand_path("test/snapshots")
+        elsif Dir.exist?("spec")
+          File.expand_path("spec/snapshots")
+        else
+          File.expand_path("snapshots")
+        end
+      end
+    end
   end
 end
